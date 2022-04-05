@@ -1,0 +1,15 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "name": "lehoa/news-admin",
+    "authors": [
+        {
+            "name": "Hoai Nam Le",
+            "email": "hnle@eos-uptrade.de"
+        }
+    ],
+    "require": {}
+}
