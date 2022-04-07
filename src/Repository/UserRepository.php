@@ -30,7 +30,7 @@ class UserRepository
         return $this->fetchAccount($stmt);
     }
     
-        private function fetchAccount(mysqli_stmt $stmt): ?User
+        private function fetchAccount(mysqli_stmt $stmt): ?User //this is used to get an user objects from a select statement
         {
             $id = null;
             $username = null;    

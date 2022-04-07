@@ -88,13 +88,11 @@ if (isset($_POST['saveButton'])) {
                         } else echo $article->getDescription(); ?></span>
                 </div>
                 <div class="icon-box">
-                    <a href="#" data-id="<?php echo $article->getId(); ?>" class="editIconLink">
-                        <img class="editIcon" data-title="<?php echo $article->getTitle(); ?>"
-                             data-description="<?php echo $article->getDescription(); ?>" src="public/images/pencil.svg"
-                             alt="">
-                    </a>
                     <a href="news.php?delete=<?php echo $article->getId(); ?>" id="deleteIconLink">
                         <img class="deleteIcon" src="public/images/close.svg" alt="">
+                    </a>
+                    <a href="#" data-id="<?php echo $article->getId(); ?>" class="editIconLink">
+                        <img class="editIcon" src="public/images/pencil.svg" alt="">
                     </a>
                 </div>
             </div>

@@ -11,13 +11,18 @@ session_start();
 
 $showError = false;
 
-if (isset($_POST['submit'])) {
-    $connect = new DatabaseConnection('root', '', 'news', 'localhost');
-    $repository = new UserRepository($connect->getConnection());
-    $auth = new AuthenticationHandler($repository);
-    $sessionHandler = new SessionHandler($repository);
-    $showError = !$auth->login($_POST['username'], $_POST['password']);
+$connect = new DatabaseConnection('root', '', 'news', 'localhost');
+$repository = new UserRepository($connect->getConnection());
+$sessionHandler = new SessionHandler($repository);
+$auth = new AuthenticationHandler($repository);
 
+if ($sessionHandler->isLoggedIn()) {
+    header('Location:news.php');
+}
+
+if (isset($_POST['submit'])) {
+    $showError = !$auth->login($_POST['username'], $_POST['password']);
+    //if there is no error during login, user will get a session and is redirected to the news site.
     if (!$showError) {
         $user = $repository->findOneByUsername($_POST['username']);
         $sessionHandler->setSessionUsername($user->getUsername());

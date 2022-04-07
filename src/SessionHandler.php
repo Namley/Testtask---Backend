@@ -18,7 +18,7 @@ class SessionHandler
         $_SESSION['username'] = $username;
     }
 
-    public function isLoggedIn(): bool
+    public function isLoggedIn(): bool //checks if the username is in the session variable
     {
         if (empty($_SESSION['username'])) {
             return false;

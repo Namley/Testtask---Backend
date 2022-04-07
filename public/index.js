@@ -5,10 +5,24 @@ $(document).on("click",".editIconLink", function () {
     $(".create-news").hide();
     $(".edit-news").show().css("display", "grid");
 
-    $(".form-parent-parent").load("fetch.php", {
-        id: articleId
-    })
+    $.ajax({
+        url: "fetch.php",
+        type: "POST",
+        data: {
+            id: articleId,
+        },
+        fail: function (error) {
+            console.log(error);
+        },
+        success: function(html){
+            console.log('success');
+            $('.form-parent-parent').append(html);
+
+        }
+    });
 });
+
+
 
 function exitEdit() {
     $(document).ready(function () {

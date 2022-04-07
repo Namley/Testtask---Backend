@@ -28,7 +28,7 @@ class ArticleRepository
         return $articles;
     }
 
-    public function createArticle(Article $article): bool
+    public function createArticle(Article $article): bool // prepares an insert statement and bind it to create a single article
     {
         $stmt = $this->connection->prepare("INSERT INTO article(title,description) VALUES(?,?)");
         $title = $article->getTitle();
@@ -56,7 +56,7 @@ class ArticleRepository
         return $this->fetchArticle($stmt);
     }
 
-    public function edit(array $article): bool
+    public function edit(array $article): bool // prepares an update statement to edit a news article. Afterwards it will check how many rows has been changed
     {
         $stmt = $this->connection->prepare('UPDATE article SET title = ?, description = ? WHERE id = ?');
 
@@ -71,11 +71,11 @@ class ArticleRepository
         if (!$stmt->execute()) return false;
         $count = $stmt->affected_rows;
         $stmt->close();
-        return false;
+        return ($count > 0);
 
     }
 
-    public function fetchArticle(mysqli_stmt $stmt):?Article
+    public function fetchArticle(mysqli_stmt $stmt):?Article //this is used to get an article objects from a select statement
     {
         $id = null;
         $title = null;

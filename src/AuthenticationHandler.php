@@ -12,7 +12,7 @@ class AuthenticationHandler
     {
         $this->userRepository = $userRepository;
     }
-    public function login(string $username, string $password):bool
+    public function login(string $username, string $password):bool //check if user is in the database and if yes verify given password
     {
         if (empty($username) || empty($password)) {
             return false;
