@@ -117,9 +117,6 @@ if (isset($_POST['saveButton'])) {
                               placeholder="Desciprtions" cols="50" rows="15"></textarea>
 
                     <button type="submit" id="createButton" class="create" name="create">Create</button>
-                    <button style="display: none" type="submit" id="saveButton" class="saveButton" name="saveButton">
-                        Save
-                    </button>
                 </div>
         </form>
     </div>

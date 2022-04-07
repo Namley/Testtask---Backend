@@ -11,14 +11,7 @@ $articleRepository = new ArticleRepository($connection->getConnection());
 $article = $articleRepository->findOneById($_POST['id']);
 ?>
 
-<strong class="edit-news">Edit News
-    <div class="icon-box">
-        <a href="" class="closeEditLink">
-            <img class="closeEditIcon" src="public/images/close.svg" onclick="exitEdit()" alt="">
-        </a>
-    </div>
-</strong>
-<form method="post" name="createNews">
+<form method="post" name="editNews">
     <div class="form-parent">
         <div class="titleForm">
             <input type="hidden" value="<?php echo $article->getId(); ?>" class="articleId" name="articleId">
@@ -28,8 +21,4 @@ $article = $articleRepository->findOneById($_POST['id']);
 
             <button type="submit" id="saveButton" class="saveButton" name="saveButton">Save</button>
         </div>
-</form>
-
-<form action="" method="post">
-    <button type="submit" name="logout" class="logout">Logout</button>
 </form>

@@ -1,8 +1,9 @@
 $(document).on("click",".editIconLink", function () {
     const articleId = $(this).attr('data-id');
     $("#createButton").hide();
-    $("#saveButton").show();
     $(".create-news").hide();
+    $(".titleInput").hide();
+    $(".descriptionInput").hide();
     $(".edit-news").show().css("display", "grid");
 
     $.ajax({
@@ -16,7 +17,7 @@ $(document).on("click",".editIconLink", function () {
         },
         success: function(html){
             console.log('success');
-            $('.form-parent-parent').append(html);
+            $('.form-parent-parent').prepend(html);
 
         }
     });
